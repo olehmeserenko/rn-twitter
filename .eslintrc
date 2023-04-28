@@ -1,0 +1,63 @@
+{
+  "extends": ["@react-native-community", "prettier", "eslint:recommended"],
+  "globals": {
+    "JSX": true,
+    "NodeJS": true,
+    "Tranlation": true,
+    "translate": true
+  },
+  "overrides": [
+    {
+      "files": ["*.json", ".prettierrc", ".eslintrc"],
+      "rules": {
+        "quote-props": ["error", "always"],
+        "quotes": ["error", "double"]
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "root": true,
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "max-len": [
+      "error",
+      {
+        "code": 80,
+        "ignoreComments": true,
+        "ignoreRegExpLiterals": true,
+        "ignoreStrings": true
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": ["debug", "error", "info", "warn"]
+      }
+    ],
+    "no-unused-vars": "error",
+    "object-shorthand": ["error", "always"],
+    "quote-props": ["warn", "consistent-as-needed"],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true,
+        "avoidEscape": true
+      }
+    ],
+    "radix": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-curly-brace-presence": ["error", "always"],
+    "react/react-in-jsx-scope": "off",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ]
+  }
+}

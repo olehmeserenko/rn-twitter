@@ -13,7 +13,7 @@ interface TweetProps {
 }
 
 export const Tweet: FC<TweetProps> = ({ tweet }) => (
-  <Link href={`tweet/${tweet.id}`} asChild>
+  <Link href={`/feed/tweet/${tweet.id}`} asChild>
     <Pressable style={styles.container}>
       <Image source={{ uri: tweet.user.image }} style={styles.userImage} />
       <View style={styles.mainContainer}>

@@ -16,7 +16,7 @@ import { authenticate } from '@/lib/api/auth'
 const Authenticate = () => {
   const [code, setCode] = useState('')
   const { email } = useSearchParams()
-  const { setAuthToken }: any = useAuth()
+  const { updateAuthToken }: any = useAuth()
 
   const onConfirm = async () => {
     if (typeof email !== 'string') {
@@ -27,7 +27,7 @@ const Authenticate = () => {
         email,
         emailToken: code,
       })
-      setAuthToken(res.authToken)
+      await updateAuthToken(res.authToken)
     } catch (e) {
       console.info(e)
       Alert.alert('Error', 'Error confirming code')

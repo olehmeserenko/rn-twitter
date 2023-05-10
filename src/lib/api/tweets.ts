@@ -1,6 +1,9 @@
-import { API_URL, authToken } from './config'
+import { API_URL } from './config'
+
+import * as SecureStore from 'expo-secure-store'
 
 export const listTweets = async () => {
+  const authToken = await SecureStore.getItemAsync('authToken')
   const res = await fetch(`${API_URL}/tweet`, {
     headers: {
       Authorization: `Bearer ${authToken}`,
@@ -13,6 +16,7 @@ export const listTweets = async () => {
 }
 
 export const getTweet = async (id: string) => {
+  const authToken = await SecureStore.getItemAsync('authToken')
   const res = await fetch(`${API_URL}/tweet/${id}`, {
     headers: {
       Authorization: `Bearer ${authToken}`,
@@ -25,6 +29,7 @@ export const getTweet = async (id: string) => {
 }
 
 export const createTweet = async (data: { content: string }) => {
+  const authToken = await SecureStore.getItemAsync('authToken')
   const res = await fetch(`${API_URL}/tweet/`, {
     method: 'POST',
     headers: {

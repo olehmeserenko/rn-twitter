@@ -10,11 +10,13 @@ import {
 
 import { useSearchParams } from 'expo-router'
 
+import { useAuth } from '@/context/AuthContext'
 import { authenticate } from '@/lib/api/auth'
 
 const Authenticate = () => {
   const [code, setCode] = useState('')
   const { email } = useSearchParams()
+  const { setAuthToken }: any = useAuth()
 
   const onConfirm = async () => {
     if (typeof email !== 'string') {
@@ -22,11 +24,12 @@ const Authenticate = () => {
     }
     try {
       const res = await authenticate({
-        email: email.toLowerCase(),
+        email,
         emailToken: code,
       })
-      console.info(res)
+      setAuthToken(res.authToken)
     } catch (e) {
+      console.info(e)
       Alert.alert('Error', 'Error confirming code')
     }
   }
